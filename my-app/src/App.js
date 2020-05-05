@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './App.css';
 import UserCard from './components/UserCard';
 import FollowerCard from './components/FollowerCard';
@@ -11,13 +12,48 @@ class App extends React.Component {
       followers: []
     };
   }
-  
+
+  componentDidMount() {
+    //step 1
+    axios
+      .get('https://api.github.com/users/mjschuette4')
+      .then( r => {
+        console.log(r.data)
+        this.setState({
+          user: [r.data]
+        })
+      })
+      
+    //step 3
+    axios
+      .get('https://api.github.com/users/mjschuette4/followers')
+      .then( r => {
+        console.log(r.data)
+        this.setState({
+          followers: [r.data]
+        })
+      })
+
+  }
+
   render(){
     return (
       <div className="App">
         <h1>Github Cards</h1>
-        <UserCard />
-        <FollowerCard />
+        <div className="UserCard">
+          {this.state.user.map(data =>(
+          <UserCard 
+            avatar_url={data.avatar_url}
+          />
+          ))}
+        </div>
+        <div className="FollowerCard">
+          {this.state.user.map(data => (
+          <FollowerCard 
+            avatar_url={data.avatar_url}
+          />
+          ))}
+        </div>
       </div>
     );
   };
