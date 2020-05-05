@@ -9,7 +9,7 @@ class App extends React.Component {
     super();
     this.state = {
       user: [],
-      followers: []
+      followers: [{}]
     };
   }
 
@@ -21,8 +21,8 @@ class App extends React.Component {
         console.log(r.data)
         this.setState({
           user: [r.data]
-        })
-      })
+        });
+      });
       
     //step 3
     axios
@@ -30,9 +30,9 @@ class App extends React.Component {
       .then( r => {
         console.log(r.data)
         this.setState({
-          followers: [r.data]
-        })
-      })
+          followers: r.data
+        });
+      });
 
   }
 
@@ -43,14 +43,19 @@ class App extends React.Component {
         <div className="UserCard">
           {this.state.user.map(data =>(
           <UserCard 
+            key={data.id}
             avatar_url={data.avatar_url}
+            login={data.login}
           />
           ))}
         </div>
         <div className="FollowerCard">
-          {this.state.user.map(data => (
-          <FollowerCard 
+          <h2>Hello Followers</h2>
+          {this.state.followers.map(data => (
+          <FollowerCard
+            key={data.id}
             avatar_url={data.avatar_url}
+            login={data.login}
           />
           ))}
         </div>
