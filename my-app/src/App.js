@@ -9,7 +9,7 @@ class App extends React.Component {
     super();
     this.state = {
       user: [],
-      followers: [{}]
+      followers: []
     };
   }
 
@@ -46,6 +46,7 @@ class App extends React.Component {
             key={data.id}
             avatar_url={data.avatar_url}
             login={data.login}
+            bio={data.bio}
           />
           ))}
         </div>
@@ -56,6 +57,7 @@ class App extends React.Component {
             key={data.id}
             avatar_url={data.avatar_url}
             login={data.login}
+            bio={data.bio}
           />
           ))}
         </div>
