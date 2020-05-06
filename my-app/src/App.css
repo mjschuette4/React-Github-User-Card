@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: purple;
+  padding: 2%;
 }
 
 .App-logo {
@@ -35,4 +37,29 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.UserCard{
+  background-color: silver;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: 2%;
+  margin-bottom: 5%;
+}
+
+.FollowerCard {
+  background-color: silver;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+}
+
+.HeadShot {
+  border-radius: 100px;
+  box-shadow: 10px 6px black;
+}
+
+.Title {
+  text-shadow: 10px 6px black;
+  color: white;
 }

@@ -39,7 +39,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <h1>Github Cards</h1>
+        <h1 className="Title">Github Cards</h1>
         <div className="UserCard">
           {this.state.user.map(data =>(
           <UserCard 
@@ -47,17 +47,20 @@ class App extends React.Component {
             avatar_url={data.avatar_url}
             login={data.login}
             bio={data.bio}
+            followers={data.followers}
+            following={data.following}
+            location={data.location}
           />
           ))}
         </div>
         <div className="FollowerCard">
-          <h2>Hello Followers</h2>
+          <h2>Followers</h2>
           {this.state.followers.map(data => (
           <FollowerCard
             key={data.id}
             avatar_url={data.avatar_url}
             login={data.login}
-            bio={data.bio}
+            
           />
           ))}
         </div>
